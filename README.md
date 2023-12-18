@@ -1,86 +1,64 @@
-# 4-1 Milestone: Create and Read in Python
+# Grazioso Salvare Search Dashboard
 
-## About the Project
+## Project Overview
 
-This Python module aims to facilitate Create (C) and Read (R) operations for MongoDB, offering functionalities to insert documents into a specified collection and query documents based on specified criteria.
+The Grazioso Salvare Search Dashboard is a data-driven web application built using Dash, Python's web framework. The purpose of this project is to create an interactive dashboard that provides insights and allows users to explore animal rescue data from an animal shelter.
 
-## Motivation
+### Functionality
 
-The motivation behind this project is to provide a simplified interface to interact with MongoDB databases for basic CRUD operations. It allows users to seamlessly insert documents into a MongoDB collection and retrieve documents based on specified criteria, simplifying the process of working with MongoDB databases in Python applications.
+The dashboard offers the following key functionalities:
 
-## Usage
+- **Filtering Data**: Users can filter animal rescue data based on different rescue types, including Water Rescue, Mountain or Wilderness Rescue, and Disaster or Individual Tracking.
+- **Interactive Visualization**: The dashboard displays the distribution of preferred animal breeds using a pie chart, allowing users to visualize the most common breeds.
+- **Geolocation Representation**: Users can select a specific data entry from the table, and the corresponding location of the animal is highlighted on the map.
 
-### Create (C) Operation
+## Tools and Technologies Used
 
-To create (insert) a document into a specified collection, utilize the `create(data)` method from the `AnimalShelter` class in the `animalShelter` module. Pass a dictionary representing the document to be inserted as the `data` argument.
+### MongoDB
 
-Example:
-```python
-from animalShelter import AnimalShelter
+The MongoDB database was chosen for its NoSQL structure, allowing flexible schema design and efficient storage of unstructured data. The PyMongo library facilitated seamless integration with Python, enabling data retrieval and manipulation.
 
-# Create an instance of AnimalShelter (CRUD)
-crud = AnimalShelter("username", "password")
+### Dash Framework
 
-# Document to be inserted
-data = {
-    "animal_type": "Dog",
-    "name": "Buddy",
-    "breed": "Golden Retriever",
-    # Additional fields...
-}
+Dash, a productive Python framework for building web applications, was utilized to create the dashboard's frontend. Its reactive components and interactivity capabilities enabled the creation of an engaging and dynamic user interface.
 
-# Insert the document into the collection
-crud.create(data)
-```
+## Project Development Steps
 
-### Read (R) Operation
+### 1. Data Retrieval
 
-To read (query) documents from the collection based on specified criteria, utilize the `read(query)` method from the `AnimalShelter` class. Pass a dictionary representing the query criteria as the `query` argument.
+The PyMongo library was employed to establish a connection to the MongoDB database, fetching animal rescue data. The retrieved data was then transformed into a pandas DataFrame for further processing.
 
-Example:
-```python
-from animalShelter import AnimalShelter
+### 2. Dashboard Design and Layout
 
-# Create an instance of AnimalShelter (CRUD)
-crud = AnimalShelter("username", "password")
+The dashboard layout was designed using HTML and Dash components. It includes filtering options, a data table, charts for breed distribution, and a map showing geolocation data.
 
-# Query documents based on animal_type: Dog
-query = {"animal_type": "Dog"}
+### 3. Interactivity Implementation
 
-# Retrieve documents matching the query criteria
-documents = crud.read(query)
-for doc in documents:
-    print(doc)  # Displaying retrieved documents
-```
+Dash callbacks were used to enable real-time interactivity. Filtering logic based on rescue types was implemented to update the displayed data table, pie chart, and map based on user selections.
 
-For further usage examples, refer to the provided Jupyter Notebook `testMongoCRUD.ipynb`.
+### 4. Deployment
 
-## Installation
+The JupyterDash package was utilized for testing and viewing the dashboard's functionality within a Jupyter Notebook environment. Deployment to a production environment can be achieved using various hosting services.
 
-### Tools Used
+## Challenges Faced and Solutions
 
-- **Python**: Programming language for module development.
-- **MongoDB**: NoSQL database system for data storage.
-- **PyMongo**: Python driver for MongoDB for Python-MongoDB interaction.
-- **Spider IDE**: Integrated Development Environment used for Python code development.
-- **Jupyter Notebook**: Interactive computational environment for creating and sharing documents containing live code, equations, visualizations, and narrative text.
+### Challenge 1: Complex Filtering Logic
 
-The rationale for using these tools was their robustness, community support, and ease of integration for interacting with MongoDB databases within Python applications, along with the productivity and interactive features offered by Spider IDE and Jupyter Notebook for code development and documentation.
+**Solution**: Conditional logic was applied to filter data accurately based on different rescue types. Careful consideration of the filter conditions ensured the correct retrieval of data from the MongoDB database.
 
-## Getting Started
+### Challenge 2: Responsive Layout Design
 
-To reproduce this project:
+**Solution**: Dash's flexible layout components and styling attributes were employed to create a responsive dashboard layout. Utilizing the `className` property and CSS styling ensured an adaptable layout across various devices and screen sizes.
 
-1. **Database Setup**: Set up a MongoDB instance with user authentication.
-2. **Python Environment**: Install Python and PyMongo.
-3. **Module Usage**: Import and instantiate the `AnimalShelter` class from the `mongoCRUD` module, then use the provided methods to perform CRUD operations as demonstrated above.
+## Resources and References
 
+- [MongoDB Official Website](https://www.mongodb.com/)
+- [Dash Documentation](https://dash.plotly.com/)
+- [PyMongo Documentation](https://pymongo.readthedocs.io/en/stable/)
 
-## Screenshots
+## Screenshots and Deployment
 
-![Screenshot 2023-11-20 at 3 17 24 AM](https://github.com/jaclynscarey/SNHU-CS-340-H7918/assets/109121563/68d11565-801f-4ad2-84a3-874e529bc735)
+Screen recording showcasing the dashboard's functionality during testing and deployment can be seen below:
 
-![Screenshot 2023-11-20 at 3 20 42 AM](https://github.com/jaclynscarey/SNHU-CS-340-H7918/assets/109121563/1d917118-7c03-4a64-99dc-a631aa4006fa)
-
-![image](https://github.com/jaclynscarey/SNHU-CS-340-H7918/assets/109121563/a8579e9e-fc95-4408-aba3-72bc02a2c13b)
+https://github.com/jaclynscarey/SNHU-CS-340-H7918/assets/109121563/15ebb9a8-3024-4491-a5ad-8a557b4f8637
 
